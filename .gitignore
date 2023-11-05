@@ -1,3 +1,8 @@
+# Folders
+/models/.zip/
+# Files
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
