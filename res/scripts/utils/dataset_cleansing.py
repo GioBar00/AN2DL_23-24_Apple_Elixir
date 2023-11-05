@@ -5,8 +5,6 @@ KEYS = list(DATASET.keys())
 IMAGES = DATASET[KEYS[0]]
 LABELS = DATASET[KEYS[1]]
 
-#indices_meme = []
-
 shrek = IMAGES[506]
 trololo = IMAGES[529]
 
