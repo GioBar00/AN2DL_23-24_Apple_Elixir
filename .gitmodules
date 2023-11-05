@@ -1,0 +1,3 @@
+[submodule "res/dataset"]
+	path = res/dataset
+	url = https://github.com/GioBar00/AN2DL_23-24_Apple_Elixir_dataset.git
