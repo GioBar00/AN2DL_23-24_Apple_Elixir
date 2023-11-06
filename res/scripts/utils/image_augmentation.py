@@ -3,7 +3,7 @@ from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 import numpy as np
 
-DATASET = np.load("public_data.npz", allow_pickle=True)
+DATASET = np.load("public_data_clean.npz", allow_pickle=True)
 KEYS = list(DATASET.keys())
 images = DATASET[KEYS[0]]
 labels = DATASET[KEYS[1]]
@@ -32,35 +32,38 @@ datagen = ImageDataGenerator(
     zoom_range=0.2,
     horizontal_flip=True,
     vertical_flip=True,
-    brightness_range=(0.2, 0.8))
+    brightness_range=(0.2, 0.8)
+    )
 
-gen_X_train = np.array([])
-gen_y_train = np.array([])
+# create new array with shape of X_train, y_train
+gen_X_train = np.empty_like(X_train)
+gen_y_train = np.empty_like(y_train)
 
-gen_images = len(X_train) * 4 
+gen_images = 20
   # Number of images that has to be generated
 for img in datagen.flow(X_train,y_train,batch_size = 1):
   gen_images -= 1
-  gen_X_train = np.append(gen_X_train, img[0])
-  gen_y_train = np.append(gen_y_train, img[1])
+  gen_X_train = np.insert(gen_X_train,0,img[0][0],axis=0) 
+  gen_y_train = np.insert(gen_y_train,0,img[1][0],axis=0)
   if gen_images < 0:
     break
 
 
 # Display a sample of images from the training-validation dataset
-num_img = 10
+num_img = 20
 fig, axes = plt.subplots(1, num_img, figsize=(96, 96))
 
 # Iterate through the selected number of images
 for i in range(num_img):
     ax = axes[i % num_img]
     ax.imshow(gen_X_train[i]/255, cmap='gray')
-    ax.set_title(f'{labels_map[y_train_val[i]]}', fontsize=40)  # Show the corresponding label
+    ax.set_title(f'{gen_y_train[i]}', fontsize=10)  # Show the corresponding label
 
 # Adjust layout and display the images
 plt.tight_layout()
 plt.show()
 
+exit()
 
 # save dataset
 # union X_train, y_train with gen_X_train, gen_y_train

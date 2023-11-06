@@ -22,5 +22,6 @@ IMAGES = np.delete(IMAGES, meme_indexes, axis=0)
 LABELS = np.delete(LABELS, meme_indexes, axis=0)
 
 print(len(IMAGES))
+print(len(LABELS))
 
 np.savez("public_data_clean.npz", IMAGES, LABELS)
