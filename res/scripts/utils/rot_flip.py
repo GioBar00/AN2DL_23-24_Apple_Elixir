@@ -61,4 +61,4 @@ plt.show()
 
 
 # save the augmented dataset
-#np.savez_compressed("public_data_rot_flip", aug_imgs, aug_lbls)
+np.savez_compressed("public_data_rot_flip", aug_imgs, aug_lbls)
