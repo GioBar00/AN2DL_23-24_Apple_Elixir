@@ -152,6 +152,8 @@ Take a CNN already trained (with high performance) and attach the top layer (Den
 - [ ] [NASNetMobile](https://keras.io/api/applications/nasnet/#nasnetmobile-function) - no smaller than 32x32x3 -
 - [ ] [NASNetLarge](https://keras.io/api/applications/nasnet/#nasnetlarge-function) - no smaller than 32x32x3 -
 
+EFFICIENT NET FAMILY
+-comment- seems that their feature extraction network is not good at all for our task
 - [x] [EfficientNetB0](https://keras.io/api/applications/efficientnet/#efficientnetb0-function) - no smaller than ?x?x3 - 0.5 on validation
 - [ ] [EfficientNetB1](https://keras.io/api/applications/efficientnet/#efficientnetb1-function) - no smaller than ?x?2x3 -
 - [x] [EfficientNetB2](https://keras.io/api/applications/efficientnet/#efficientnetb2-function) - no smaller than ?x?x3 - 0.5 on validation
