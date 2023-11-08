@@ -125,17 +125,17 @@ Take a CNN already trained (with high performance) and attach the top layer (Den
 
 <br />
 
-- [ ] [Xception](https://keras.io/api/applications/xception) - no smaller than 71x71x3 - ongoing testing @Andrea 
+- [ ] [Xception](https://keras.io/api/applications/xception) - no smaller than 71x71x3 - :clock3:
 
 - [ ] [VGG16](https://keras.io/api/applications/vgg/#vgg16-function) - no smaller than 32x32x3 -
 - [ ] [VGG19](https://keras.io/api/applications/vgg/#vgg19-function) - no smaller than 32x32x3 -
 
-- [ ] [ResNet50](https://keras.io/api/applications/resnet/#resnet50-function) - no smaller than 32x32x3 -
-- [ ] [ResNet50V2](https://keras.io/api/applications/resnet/#resnet50v2-function) - no smaller than 32x32x3 -
-- [ ] [ResNet101](https://keras.io/api/applications/resnet/#resnet101-function) - no smaller than 32x32x3 -
-- [ ] [ResNet101V2](https://keras.io/api/applications/resnet/#resnet101v2-function) - no smaller than 32x32x3 -
-- [ ] [ResNet152](https://keras.io/api/applications/resnet/#resnet152-function) - no smaller than 32x32x3 -
-- [ ] [ResNet152V2](https://keras.io/api/applications/resnet/#resnet152v2-function) - no smaller than 32x32x3 -
+- [ ] [ResNet50](https://keras.io/api/applications/resnet/#resnet50-function) - no smaller than 32x32x3 - :hourglass:
+- [ ] [ResNet50V2](https://keras.io/api/applications/resnet/#resnet50v2-function) - no smaller than 32x32x3 - :hourglass:
+- [ ] [ResNet101](https://keras.io/api/applications/resnet/#resnet101-function) - no smaller than 32x32x3 - :hourglass:
+- [ ] [ResNet101V2](https://keras.io/api/applications/resnet/#resnet101v2-function) - no smaller than 32x32x3 - :hourglass:
+- [ ] [ResNet152](https://keras.io/api/applications/resnet/#resnet152-function) - no smaller than 32x32x3 - :hourglass:
+- [ ] [ResNet152V2](https://keras.io/api/applications/resnet/#resnet152v2-function) - no smaller than 32x32x3 - :hourglass:
 
 - [ ] [InceptionV3](https://keras.io/api/applications/inceptionv3) - no smaller than 75x75x3 -
 - [ ] [InceptionResNetV2](https://keras.io/api/applications/inceptionresnetv2) - no smaller than 75x75x3 -
