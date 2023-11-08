@@ -84,7 +84,7 @@ To Read the Data use:
 <br />
 <br />
 
-# Table of Contents
+<!-- # Table of Contents
 
 # 1. Task and Goal
 ## 1.1 Task Description
@@ -107,7 +107,7 @@ To Read the Data use:
 ## 3.3 Test Model C
 ## 3.4 Comparisons
 ## 3.5 Final Evaluation
-<br />
+<br /> -->
 
 
 
@@ -153,7 +153,7 @@ Take a CNN already trained (with high performance) and attach the top layer (Den
 - [ ] [NASNetLarge](https://keras.io/api/applications/nasnet/#nasnetlarge-function) - no smaller than 32x32x3 -
 
 - [x] [EfficientNetB0](https://keras.io/api/applications/efficientnet/#efficientnetb0-function) - no smaller than ?x?x3 - 0.5 on validation
-- [] [EfficientNetB1](https://keras.io/api/applications/efficientnet/#efficientnetb1-function) - no smaller than ?x?2x3 -
+- [ ] [EfficientNetB1](https://keras.io/api/applications/efficientnet/#efficientnetb1-function) - no smaller than ?x?2x3 -
 - [x] [EfficientNetB2](https://keras.io/api/applications/efficientnet/#efficientnetb2-function) - no smaller than ?x?x3 - 0.5 on validation
 - [ ] [EfficientNetB3](https://keras.io/api/applications/efficientnet/#efficientnetb3-function) - no smaller than ?x?x3 -
 - [x] [EfficientNetB4](https://keras.io/api/applications/efficientnet/#efficientnetb4-function) - no smaller than ?x?x3 - 0.5 on validation
@@ -161,17 +161,17 @@ Take a CNN already trained (with high performance) and attach the top layer (Den
 - [ ] [EfficientNetB6](https://keras.io/api/applications/efficientnet/#efficientnetb6-function) - no smaller than ?x?x3 -
 - [ ] [EfficientNetB7](https://keras.io/api/applications/efficientnet/#efficientnetb7-function) - no smaller than ?x?x3 -
 
-- [ ] [EfficientNetV2B0](https://keras.io/api/applications/efficientnet_v2/#efficientnetv2b0-function) - no smaller than - 
-- [ ] [EfficientNetV2B1](https://keras.io/api/applications/efficientnet_v2/#efficientnetv2b1-function) - no smaller than - 
-- [ ] [EfficientNetV2B2](https://keras.io/api/applications/efficientnet_v2/#efficientnetv2b2-function) - no smaller than - 
-- [ ] [EfficientNetV2B3](https://keras.io/api/applications/efficientnet_v2/#efficientnetv2b3-function) - no smaller than - 
+- [ ] [EfficientNetV2B0](https://keras.io/api/applications/efficientnet_v2/#efficientnetv2b0-function) - no smaller than ?x?x3 - 
+- [ ] [EfficientNetV2B1](https://keras.io/api/applications/efficientnet_v2/#efficientnetv2b1-function) - no smaller than ?x?x3 - 
+- [ ] [EfficientNetV2B2](https://keras.io/api/applications/efficientnet_v2/#efficientnetv2b2-function) - no smaller than ?x?x3 - 
+- [ ] [EfficientNetV2B3](https://keras.io/api/applications/efficientnet_v2/#efficientnetv2b3-function) - no smaller than ?x?x3 - 
 
-- [ ] [EfficientNetV2S](https://keras.io/api/applications/efficientnet_v2/#efficientnetv2s-function) - no smaller than - 
-- [ ] [EfficientNetV2M](https://keras.io/api/applications/efficientnet_v2/#efficientnetv2m-function) - no smaller than - 
-- [ ] [EfficientNetV2L](https://keras.io/api/applications/efficientnet_v2/#efficientnetv2l-function) - no smaller than - 
+- [ ] [EfficientNetV2S](https://keras.io/api/applications/efficientnet_v2/#efficientnetv2s-function) - no smaller than ?x?x3 -  
+- [ ] [EfficientNetV2M](https://keras.io/api/applications/efficientnet_v2/#efficientnetv2m-function) - no smaller than ?x?x3 - 
+- [ ] [EfficientNetV2L](https://keras.io/api/applications/efficientnet_v2/#efficientnetv2l-function) - no smaller than ?x?x3 - 
 
-- [ ] [ConvNeXtTiny](https://keras.io/api/applications/convnext/#convnexttiny-function)
-- [ ] [ConvNeXtSmall](https://keras.io/api/applications/convnext/#convnextsmall-function)
-- [ ] [ConvNeXtBase](https://keras.io/api/applications/convnext/#convnextbase-function)
-- [ ] [ConvNeXtLarge](https://keras.io/api/applications/convnext/#convnextlarge-function)
-- [ ] [ConvNeXtXLarge](https://keras.io/api/applications/convnext/#convnextxlarge-function)
+- [ ] [ConvNeXtTiny](https://keras.io/api/applications/convnext/#convnexttiny-function) - no smaller than ?x?x3 - 
+- [ ] [ConvNeXtSmall](https://keras.io/api/applications/convnext/#convnextsmall-function) - no smaller than ?x?x3 - 
+- [ ] [ConvNeXtBase](https://keras.io/api/applications/convnext/#convnextbase-function) - no smaller than ?x?x3 - 
+- [ ] [ConvNeXtLarge](https://keras.io/api/applications/convnext/#convnextlarge-function) - no smaller than ?x?x3 - 
+- [ ] [ConvNeXtXLarge](https://keras.io/api/applications/convnext/#convnextxlarge-function) - no smaller than ?x?x3 - 
