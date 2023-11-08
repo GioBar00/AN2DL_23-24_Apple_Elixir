@@ -125,7 +125,7 @@ Take a CNN already trained (with high performance) and attach the top layer (Den
 
 <br />
 
-- [ ] [Xception](https://keras.io/api/applications/xception) - no smaller than 71x71x3 -
+- [ ] [Xception](https://keras.io/api/applications/xception) - no smaller than 71x71x3 - ongoing testing @Andrea 
 
 - [ ] [VGG16](https://keras.io/api/applications/vgg/#vgg16-function) - no smaller than 32x32x3 -
 - [ ] [VGG19](https://keras.io/api/applications/vgg/#vgg19-function) - no smaller than 32x32x3 -
@@ -141,7 +141,7 @@ Take a CNN already trained (with high performance) and attach the top layer (Den
 - [ ] [InceptionResNetV2](https://keras.io/api/applications/inceptionresnetv2) - no smaller than 75x75x3 -
 
 - [ ] [MobileNet](https://keras.io/api/applications/mobilenet/#mobilenet-function) - no smaller than 32x32x3 -
-- [ ] [MobileNetV2](https://keras.io/api/applications/mobilenet/#mobilenetv2-function) - no smaller than ?x?x3 -
+- [x] [MobileNetV2](https://keras.io/api/applications/mobilenet/#mobilenetv2-function) - no smaller than ?x?x3 - 0.78 score on codalab
 - [ ] [MobileNetV3Small](https://keras.io/api/applications/mobilenet/#mobilenetv3small-function) - no smaller than ?x?x3 -
 - [ ] [MobileNetV3Large](https://keras.io/api/applications/mobilenet/#mobilenetv3large-function) - no smaller than ?x?x3 -
 
@@ -152,12 +152,12 @@ Take a CNN already trained (with high performance) and attach the top layer (Den
 - [ ] [NASNetMobile](https://keras.io/api/applications/nasnet/#nasnetmobile-function) - no smaller than 32x32x3 -
 - [ ] [NASNetLarge](https://keras.io/api/applications/nasnet/#nasnetlarge-function) - no smaller than 32x32x3 -
 
-- [ ] [EfficientNetB0](https://keras.io/api/applications/efficientnet/#efficientnetb0-function) - no smaller than ?x?x3 -
-- [ ] [EfficientNetB1](https://keras.io/api/applications/efficientnet/#efficientnetb1-function) - no smaller than ?x?2x3 -
-- [ ] [EfficientNetB2](https://keras.io/api/applications/efficientnet/#efficientnetb2-function) - no smaller than ?x?x3 -
+- [x] [EfficientNetB0](https://keras.io/api/applications/efficientnet/#efficientnetb0-function) - no smaller than ?x?x3 - 0.5 on validation
+- [] [EfficientNetB1](https://keras.io/api/applications/efficientnet/#efficientnetb1-function) - no smaller than ?x?2x3 -
+- [x] [EfficientNetB2](https://keras.io/api/applications/efficientnet/#efficientnetb2-function) - no smaller than ?x?x3 - 0.5 on validation
 - [ ] [EfficientNetB3](https://keras.io/api/applications/efficientnet/#efficientnetb3-function) - no smaller than ?x?x3 -
-- [ ] [EfficientNetB4](https://keras.io/api/applications/efficientnet/#efficientnetb4-function) - no smaller than ?x?x3 -
-- [ ] [EfficientNetB5](https://keras.io/api/applications/efficientnet/#efficientnetb5-function) - no smaller than ?x?x3 -
+- [x] [EfficientNetB4](https://keras.io/api/applications/efficientnet/#efficientnetb4-function) - no smaller than ?x?x3 - 0.5 on validation
+- [x] [EfficientNetB5](https://keras.io/api/applications/efficientnet/#efficientnetb5-function) - no smaller than ?x?x3 - 0.5 on validation
 - [ ] [EfficientNetB6](https://keras.io/api/applications/efficientnet/#efficientnetb6-function) - no smaller than ?x?x3 -
 - [ ] [EfficientNetB7](https://keras.io/api/applications/efficientnet/#efficientnetb7-function) - no smaller than ?x?x3 -
 
