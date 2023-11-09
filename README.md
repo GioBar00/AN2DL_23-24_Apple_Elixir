@@ -182,6 +182,6 @@ _:x: Seems that their feature extraction network is not good at all for our task
 
 - [ ] [ConvNeXtTiny](https://keras.io/api/applications/convnext/#convnexttiny-function) - no smaller than ?x?x3 - 
 - [ ] [ConvNeXtSmall](https://keras.io/api/applications/convnext/#convnextsmall-function) - no smaller than ?x?x3 - 
-- [ ] [ConvNeXtBase](https://keras.io/api/applications/convnext/#convnextbase-function) - no smaller than ?x?x3 - 
+- [ ] [ConvNeXtBase](https://keras.io/api/applications/convnext/#convnextbase-function) - no smaller than ?x?x3 - :clock3:
 - [ ] [ConvNeXtLarge](https://keras.io/api/applications/convnext/#convnextlarge-function) - no smaller than ?x?x3 - 
 - [ ] [ConvNeXtXLarge](https://keras.io/api/applications/convnext/#convnextxlarge-function) - no smaller than ?x?x3 - 
