@@ -175,7 +175,7 @@ _:x: Seems that their feature extraction network is not good at all for our task
 - [ ] [EfficientNetV2B3](https://keras.io/api/applications/efficientnet_v2/#efficientnetv2b3-function) - no smaller than ?x?x3 - 
 
 - [ ] [EfficientNetV2S](https://keras.io/api/applications/efficientnet_v2/#efficientnetv2s-function) - no smaller than ?x?x3 -  
-- [ ] [EfficientNetV2M](https://keras.io/api/applications/efficientnet_v2/#efficientnetv2m-function) - no smaller than ?x?x3 - 
+- [ ] [EfficientNetV2M](https://keras.io/api/applications/efficientnet_v2/#efficientnetv2m-function) - no smaller than ?x?x3 - :clock3:
 - [ ] [EfficientNetV2L](https://keras.io/api/applications/efficientnet_v2/#efficientnetv2l-function) - no smaller than ?x?x3 - 
 
 <br />
