@@ -11,3 +11,4 @@ grid_images/
 *.txt
 
 temp.py
+.DS_Store
