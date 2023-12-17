@@ -53,11 +53,12 @@ def plot_window_telescope(window, telescope, predicted_telescope=None):
     # remove padding if present
     window = window[window != -1.]
     # connect window and telescope
-    window = np.concatenate((window, telescope[:1]))
+    telescope = np.concatenate((window[-1:], telescope))
     # plot window and telescope
     plt.plot(np.arange(len(window)), window, label="window")
-    plt.plot(np.arange(len(window) - 1, len(window) - 1 + len(telescope)), telescope, label="telescope")
+    plt.plot(np.arange(len(window), len(window) + len(telescope)), telescope, label="telescope")
     if predicted_telescope is not None:
+        predicted_telescope = np.concatenate((window[-1:], predicted_telescope))
         plt.plot(np.arange(len(window), len(window) + len(predicted_telescope)), predicted_telescope,
                  label="predicted telescope")
     plt.legend()
