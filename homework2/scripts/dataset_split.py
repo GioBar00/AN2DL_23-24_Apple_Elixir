@@ -6,8 +6,11 @@ training_data = np.load("../dataset/training_data_clean.npy", allow_pickle=True)
 categories = np.load("../dataset/categories_clean.npy", allow_pickle=True)
 series_lengths = np.load("../dataset/series_length_clean.npy", allow_pickle=True)
 
+global num_windows
 
 def build_sequence(data, categories, window_size=200, stride=200, telescope=18):
+    global num_windows
+    num_windows = 0
     actual_window = window_size + telescope
 
     new_categories = []
@@ -18,11 +21,17 @@ def build_sequence(data, categories, window_size=200, stride=200, telescope=18):
 
     for i, element in enumerate(data):
         length = len(element)
+        new_stride = stride
         # number of windows
-        n_windows = int(np.ceil((length - actual_window) / stride)) + 1
+        n_windows = int(np.ceil((length - actual_window) / new_stride)) + 1
+        if n_windows < 1:
+            n_windows = 1
+        # print("Length: ", length, " n_windows: ", n_windows)
         # reevaluate the stride
         if n_windows > 1:
-            stride = int((length - actual_window) / (n_windows - 1)) + 1
+            new_stride = int((length - actual_window) / (n_windows - 1)) + 1
+        num_windows += n_windows
+
         # start from the end of the series
         start_idx = length - actual_window
         end_idx = length
@@ -43,8 +52,8 @@ def build_sequence(data, categories, window_size=200, stride=200, telescope=18):
             # append the category
             new_categories.append(categories[i])
             # update the start and end index
-            start_idx -= stride
-            end_idx -= stride
+            start_idx -= new_stride
+            end_idx -= new_stride
 
     return X, y, new_categories
 
@@ -56,18 +65,19 @@ def plot_window_telescope(window, telescope, predicted_telescope=None):
     telescope = np.concatenate((window[-1:], telescope))
     # plot window and telescope
     plt.plot(np.arange(len(window)), window, label="window")
-    plt.plot(np.arange(len(window), len(window) + len(telescope)), telescope, label="telescope")
+    plt.plot(np.arange(len(window) - 1, len(window) - 1 + len(telescope)), telescope, label="telescope")
     if predicted_telescope is not None:
         predicted_telescope = np.concatenate((window[-1:], predicted_telescope))
-        plt.plot(np.arange(len(window), len(window) + len(predicted_telescope)), predicted_telescope,
+        plt.plot(np.arange(len(window) - 1, len(window) - 1 + len(predicted_telescope)), predicted_telescope,
                  label="predicted telescope")
     plt.legend()
     plt.show()
 
-
 data = [training_data[i, :series_lengths[i]] for i in range(len(training_data))]
 
 X, y, categories = build_sequence(data, categories, window_size=200, stride=200, telescope=18)
+
+assert len(X) == len(y) == len(categories) == num_windows
 
 # plot a random window and telescope
 index = np.random.randint(0, len(X))
