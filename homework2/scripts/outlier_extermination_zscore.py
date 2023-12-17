@@ -117,4 +117,4 @@ for i in range(len(training_data)):
 # save data
 np.save("../dataset/training_data_clean.npy", padded_data)
 np.save("../dataset/categories_clean.npy", categories)
-np.save("../dataset/valid_periods_clean.npy", length)
+np.save("../dataset/series_length_clean.npy", length)

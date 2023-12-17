@@ -2,14 +2,15 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 
-training_data = np.load("../dataset/training_data.npy", allow_pickle=True)
-categories = np.load("../dataset/categories.npy", allow_pickle=True)
-valid_periods = np.load("../dataset/valid_periods.npy", allow_pickle=True)
+training_data = np.load("../dataset/training_data_clean.npy", allow_pickle=True)
+categories = np.load("../dataset/categories_clean.npy", allow_pickle=True)
+series_lengths = np.load("../dataset/series_length_clean.npy", allow_pickle=True)
 
 
-def build_sequence(data, window_size=200, stride=200, telescope=18):
+def build_sequence(data, categories, window_size=200, stride=200, telescope=18):
     actual_window = window_size + telescope
 
+    new_categories = []
     # two dimensional array (number of series, window size)
     X = []
     # two dimensional array (number of series, telescope
@@ -39,11 +40,14 @@ def build_sequence(data, window_size=200, stride=200, telescope=18):
             X.append(temp)
             # append the telescope to y
             y.append(element[end_idx - telescope:end_idx])
+            # append the category
+            new_categories.append(categories[i])
             # update the start and end index
             start_idx -= stride
             end_idx -= stride
 
-    return X, y
+    return X, y, new_categories
+
 
 def plot_window_telescope(window, telescope, predicted_telescope=None):
     # remove padding if present
@@ -54,24 +58,36 @@ def plot_window_telescope(window, telescope, predicted_telescope=None):
     plt.plot(np.arange(len(window)), window, label="window")
     plt.plot(np.arange(len(window) - 1, len(window) - 1 + len(telescope)), telescope, label="telescope")
     if predicted_telescope is not None:
-        plt.plot(np.arange(len(window), len(window) + len(predicted_telescope)), predicted_telescope, label="predicted telescope")
+        plt.plot(np.arange(len(window), len(window) + len(predicted_telescope)), predicted_telescope,
+                 label="predicted telescope")
     plt.legend()
     plt.show()
 
 
-data = [training_data[i, valid_periods[i, 0]:valid_periods[i, 1]] for i in range(len(training_data))]
+data = [training_data[i, :series_lengths[i]] for i in range(len(training_data))]
 
-X, y = build_sequence(data, window_size=200, stride=200, telescope=18)
-
+X, y, categories = build_sequence(data, categories, window_size=200, stride=200, telescope=18)
 
 # plot a random window and telescope
 index = np.random.randint(0, len(X))
 plot_window_telescope(X[index], y[index])
 
+""" TESTED AND WORKING
 # split the data into train and test
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+X_train, X_test, y_train, y_test, categories_train, categories_test, idx_train, idx_test = train_test_split(X, y,
+                                                                                                            categories,
+                                                                                                            range(
+                                                                                                                len(X)),
+                                                                                                            test_size=0.2,
+                                                                                                            stratify=categories)
+# assert the categories are the same as before splitting
+for i in range(len(X_train)):
+    assert categories_train[i] == categories[idx_train[i]]
+"""
+# split the data into train and test while preserving the categories distribution
+X_train, X_test, y_train, y_test, categories_train, categories_test = train_test_split(X, y, categories,
+                                                                                       test_size=0.2,
+                                                                                       stratify=categories)
 
 print("Number of training examples: ", len(X_train))
 print("Number of test examples: ", len(X_test))
-
-
