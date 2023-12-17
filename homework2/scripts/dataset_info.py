@@ -3,6 +3,41 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import RobustScaler
 
+def build_sequences(df, window=200, stride=200, telescope=100):
+    # Sanity check to avoid runtime errors
+    assert window % stride == 0
+    dataset = []
+    labels = []
+    for i in range(len(df)):
+        # Get the element
+        element = df[i]
+        # Get the length of the element
+        length = len(element)
+        # Get the number of sequences even partial ones
+        num_sequences = length // stride + 1
+        for j in range(num_sequences):
+            # Get the start and end index of the sequence
+            start_idx = j * stride
+            end_idx = start_idx + window
+            # Check if the sequence is shorter than the window
+            if end_idx + telescope > length:
+                sequence = element[start_idx: -telescope]
+                label = element[-telescope:]
+                dataset.append(sequence)
+                labels.append(label)
+                break
+            else:
+                # Get the sequence
+                sequence = element[start_idx:end_idx]
+                label = element[end_idx: end_idx + telescope]
+                # Append the sequence to the dataset
+                dataset.append(sequence)
+                labels.append(label)
+
+    dataset = np.array(dataset)
+    labels = np.array(labels)
+    return dataset, labels
+
 def plot_series(series, title):
     """
     Plot a series
@@ -44,10 +79,10 @@ for category in np.unique(categories):
     print("Percentage of series with length < 200 in category {}: {}".format(category, np.sum(
         valid_periods[categories == category, 1] - valid_periods[categories == category, 0] < 200) / np.sum(
         categories == category)))
-    print("Number of series with length < 50 in category {}: {}".format(category, np.sum(
-        valid_periods[categories == category, 1] - valid_periods[categories == category, 0] < 50)))
-    print("Percentage of series with length < 50 in category {}: {}".format(category, np.sum(
-        valid_periods[categories == category, 1] - valid_periods[categories == category, 0] < 50) / np.sum(
+    print("Number of series with length < 40 in category {}: {}".format(category, np.sum(
+        valid_periods[categories == category, 1] - valid_periods[categories == category, 0] < 40)))
+    print("Percentage of series with length < 40 in category {}: {}".format(category, np.sum(
+        valid_periods[categories == category, 1] - valid_periods[categories == category, 0] < 40) / np.sum(
         categories == category)))
     # calculate average and std of series values
     padded_data = training_data[categories == category]
@@ -68,7 +103,7 @@ for category in np.unique(categories):
     print("Average of series mean in category {}: {}".format(category, np.mean(data_mean)))
     print("Std of series mean in category {}: {}".format(category, np.std(data_mean)))
     print("*" * 50)
-    #rand_idx = np.random.randint(0, len(padded_data))
+    rand_idx = np.random.randint(0, len(padded_data))
     # plot one series
     #plot_series(pd.Series(padded_data[rand_idx, periods[rand_idx, 0]:periods[rand_idx, 1]]), "Series in category {}".format(category))
 
@@ -82,6 +117,58 @@ for category in np.unique(categories):
     # initial_idx = np.cumsum(data_len)[rand_idx]
     # plot_series(pd.Series(scaled_data[initial_idx : initial_idx + data_len[rand_idx]]), "Scaled series in category {}".format(category))
 
+    # X, y = build_sequences(data, window=200, stride=200, telescope=18)
+    # plot_series(pd.Series(data[rand_idx]), "Series in category {}".format(category))
+    # plot_series(pd.Series(X[rand_idx]), "Sequence in category {}".format(category))
+    # plot_series(pd.Series(y[rand_idx]), "Label in category {}".format(category))
+
+#plot how many series are for each length
+# series_length = []
+# for i in range(len(training_data)):
+#     size = valid_periods[i, 1] - valid_periods[i, 0]
+#     if size < 200:
+#         series_length.append(size)
+#
+# plt.hist(series_length, bins=100)
+# plt.show()
+
+# import statsmodels.api as sm
+#
+# for category in np.unique(categories):
+#     idexes = []
+#     for i in range(len(series_by_category[category])):
+#         acorr = sm.tsa.acf(series_by_category[category][i], nlags=200)
+#         # last index where acorr is > 0.1
+#         idx = np.where(abs(acorr) > 0.2)[0][-1]
+#         idexes.append(idx)
+#
+#     indexes = np.array(idexes)
+#     idxs_mean = np.mean(indexes, axis=0)
+#     print("Category: {}".format(category))
+#     print("Average autocorrelation: {}".format(idxs_mean))
+#     # plot idxs
+#     plt.hist(indexes, bins=100)
+#     plt.show()
+
+def plot_two_series(series1, series2, title):
+    # plot 2 series in grid
+    fig, axes = plt.subplots(2, 1, figsize=(10, 10))
+    axes[0].plot(series1)
+    axes[0].set_title("First series length: {}".format(len(series1)))
+    axes[1].plot(series2)
+    axes[1].set_title("Second series length: {}".format(len(series2)))
+    plt.suptitle(title)
+    plt.show()
+
+plot_idxs = [33257, 34474]
+plot_two_series(training_data[plot_idxs[0], valid_periods[plot_idxs[0], 0]:valid_periods[plot_idxs[0], 1]],
+                training_data[plot_idxs[1], valid_periods[plot_idxs[1], 0]:valid_periods[plot_idxs[1], 1]],
+                "Equal series")
+plot_idxs = [29300, 29317]
+plot_two_series(training_data[plot_idxs[0], valid_periods[plot_idxs[0], 0]:valid_periods[plot_idxs[0], 1]],
+                training_data[plot_idxs[1], valid_periods[plot_idxs[1], 0]:valid_periods[plot_idxs[1], 1]],
+                "First series contained in second series")
+
 exit(0)
 # for each category plot a 4 random series in a grid
 fig, axes = plt.subplots(len(np.unique(categories)), 4, figsize=(20, 20))
@@ -91,3 +178,5 @@ for i, category in enumerate(np.unique(categories)):
         axes[i, j].plot(series_by_category[category][rand_idx])
         axes[i, j].set_title("Category: {}".format(category))
 plt.show()
+
+# build sequences
